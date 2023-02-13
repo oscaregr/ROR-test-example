@@ -1,0 +1,13 @@
+<h2>Login</h2>
+
+<button><%= link_to 'create user', new_user_path%></button>
+
+<%= form_with url: root_path, method: :post do | form | %>
+  <%= form.label 'name' %>
+  <%= form.text_field :name %>
+  <br>
+  <%= form.label 'password' %>
+  <%= form.password_field :password %>
+  <br>
+  <%= form.submit 'login' %>
+<% end %>

@@ -1,0 +1,6 @@
+<button><%= link_to 'Logout', root_path%></button>
+
+<h3><%= @user.name %><h3>
+<p><%= @user.description %></p>
+<%= link_to 'update', edit_user_path(@user) %>
+<%= button_to 'delete', user_path(@user), method: :delete %>

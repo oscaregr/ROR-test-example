@@ -1,0 +1,19 @@
+<%= form_for @user do |form| %>
+
+  <% @user.errors.full_messages.each do |error| %>
+    <div>
+      <%= error %>
+    </div>
+  <% end %>
+
+  <%= form.label 'name' %>
+  <%= form.text_field :name %>
+  <br>
+  <%= form.label 'description' %>
+  <%= form.text_field :description %>
+  <br>
+  <%= form.label 'password' %>
+  <%= form.password_field :password %>
+  <br>
+  <%= form.submit %>
+<% end %>
