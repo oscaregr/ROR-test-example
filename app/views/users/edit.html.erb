@@ -2,4 +2,19 @@
 
 <h2>edit user</h2>
 
-<%= render 'form' %>
+<%= form_for @user do |form| %>
+
+  <% @user.errors.full_messages.each do |error| %>
+    <div>
+      <%= error %>
+    </div>
+  <% end %>
+
+  <%= form.label 'name' %>
+  <%= form.text_field :name %>
+  <br>
+  <%= form.label 'description' %>
+  <%= form.text_field :description %>
+  <br>
+  <%= form.submit %>
+<% end %>

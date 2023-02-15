@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
     if @user&.authenticate(params[:password])
       session[:user_id] = @user.id
+      session[:pass] = params[:password]
       redirect_to home_index_path
     end
   end
@@ -29,11 +30,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find_by(id: session[:user_id])
+    @user = user
   end
 
   def update
-    if user.update(user_params)
+    if user.update(user_params.merge(password: session[:pass]))
       redirect_to home_index_path
     else
       render :edit, status: :unprocessable_entity
@@ -51,6 +52,6 @@ class UsersController < ApplicationController
     end
 
     def user
-      User.find(params[:id])
+      User.find_by(id: params[:id])
     end
 end
