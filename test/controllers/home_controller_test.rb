@@ -1,7 +1,14 @@
 require "test_helper"
 
 class HomeControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+  
+  setup do
+    login
+  end
+
+  test "get home page" do
+    get home_index_path
+
+    assert_response :success
+  end
 end
